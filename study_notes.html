@@ -1694,6 +1694,54 @@ div.tocify {
 <li><p>How do the shape of the <em>t</em> and normal distributions compare? How are they similar, how are they different?</p></li>
 </ol>
 </div>
+<div id="fundamentals-05---samples-and-parameter-estimation" class="section level2">
+<h2>Fundamentals 05 - Samples and parameter estimation</h2>
+<div id="fitting-01" class="section level3">
+<h3>Fitting 01</h3>
+<p>Sheet “Fitting 01” in “Leaf Excercise Fundamentals 05” has the same general approach as Fitting 02 and 03. The headers on row 3 “Fitting 01” indicate the sequence of calculations for the stereotypical approach to model fitting. Model fitting means fitting models to data by changing the model’s parameter values to minimize error.</p>
+<p>We are fitting this model:</p>
+<p><span class="math inline">\(Y_{i,obs} = \frac{1}{\sigma\sqrt2\pi}e^{-(X_i-\mu)^2/2\sigma^2} + error_{i}\)</span>,</p>
+<p>where <span class="math inline">\(Y_{i,obs}\)</span> is the response for each value of <span class="math inline">\(X_i\)</span>.</p>
+<p>The process of reducing error follows:</p>
+<p><span class="math inline">\(Error = \Sigma{(outcome_i - model_i)^2}\)</span>.</p>
+<p>Describe in words how to move from column A to column H.</p>
+<p>Change the values of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. How does the orange curve change - can you predict this change before changing the value?</p>
+<p>How does <em>SSE</em> change in your experiment of changing <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
+<p>Plot <em>SSE</em> vs. the value of <span class="math inline">\(\mu\)</span>. Choose 5 values of <span class="math inline">\(\mu\)</span> and plot the resulting <em>SSE</em> value. The is referred to as a cost function. What inferences can you make if you choose values for <span class="math inline">\(\mu\)</span> &lt; 0 and &gt; 0?</p>
+</div>
+<div id="fitting-02" class="section level3">
+<h3>Fitting 02</h3>
+<p>Sheet “Fitting 02” presents results that are similar to Fitting 01. What are the differences in the values column between Fitting 01 and 02 - use a range of summary statistics to decribe the differences (e.g. quantiles, range, ect.).</p>
+<p>What is plotted in the second panel - describe in detail and describe why it is useful. Describe the relationship of the upper and bottom panels.</p>
+</div>
+<div id="fitting-03" class="section level3">
+<h3>Fitting 03</h3>
+<p>Sheet Fitting 03 highlights the role of the cumulative frequency distribution to make inference.</p>
+<p>Describe in detail how the observed and modeled frequency distributions are similar and differ.</p>
+<p>What inference can be made about the relative probability of getting a number than a certain value <span class="math inline">\(P(x &gt; 4)\)</span> or less than a certain value <span class="math inline">\(P(x &lt; -3)\)</span>.</p>
+<p>Describe in detail the relationship of the top and bottom panels.</p>
+</div>
+<div id="standard-deviation" class="section level3">
+<h3>Standard Deviation</h3>
+<p>What is the relationship between the Standard Error of Population and the Standard Error of Sample?</p>
+</div>
+<div id="z-score" class="section level3">
+<h3>Z-score</h3>
+<p>The Z-score sheet contrasts two different ways of calculating the Z-score.</p>
+<p>The first is using NORM.DIST. This is is a built in function in MS Excel. Describe in detail what is calculated in column D.</p>
+<p>Column F and G are also calculations for the Z-score. Walk through this calculation, what is returned.</p>
+<p>Why are the observed values and the Z-score values linearly correlated?</p>
+</div>
+<div id="t-dist" class="section level3">
+<h3><em>t</em>-dist</h3>
+<p>What is the relationship of kurtosity and sample size in the <em>t</em>-distribution?</p>
+</div>
+<div id="confidence-interval" class="section level3">
+<h3>Confidence Interval</h3>
+<p>How does increasing sample size influence the Confidence Interval? Specifically, what components of the CI calculation are influenced?</p>
+<p>How does sample selection, specifically SD impact the CI?</p>
+</div>
+</div>
 </div>
 
 
