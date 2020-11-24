@@ -1655,96 +1655,202 @@ div.tocify {
 </div>
 
 
-<div id="introduction-to-computer-intensive-statistical-approaches" class="section level1">
-<h1><span class="header-section-number">1</span> Introduction to computer-intensive statistical approaches</h1>
-<div id="permutation-methods---use-sampling-without-replacement-to-test-hypotheses-of-no-effect." class="section level2">
-<h2><span class="header-section-number">1.1</span> Permutation methods - use sampling without replacement to test hypotheses of “no effect”.</h2>
-<p>Randomly redistribute observations</p>
-<p>Calculate a statistic of interest</p>
-<p><em>If we do this many times:</em></p>
-<p>We generate a sampling distribution of observed values for the statistic of interest under the null hypothesis of no difference between the two populations.</p>
-<p>We compare our observed statistic to the sampling distribution to determine how likely our observed statistic is.</p>
-<p>We can generate a sampling distribution for any parameter of interest and then determine the percentile of our observed parameter relative to those of the permutation samples.</p>
+<div id="computer-intensive-statistical-approaches" class="section level1">
+<h1><span class="header-section-number">1</span> Computer-intensive statistical approaches</h1>
+<p>Below I document (following the reading I circulated) three non-parametric statistical approaches. These approaches are similar:</p>
+<ol style="list-style-type: decimal">
+<li>They do not require theoretical distributions for hypothesis testing.</li>
+<li>Involve randomized sampling performed many times from the data (observations) available to the experimenter.</li>
+<li>All require representative and randomly sampled observations.</li>
+</ol>
+<ul>
+<li>Many statistical methods, other than the classical ones presented by Zar and others that rely on the characteristics of the t-, Z-, F-, and normal distributions are not able to “handle” some statistical approaches including the non-parameteric ones presented below.</li>
+</ul>
+<div id="why-are-we-interested-in-using-resampling-techniques" class="section level2">
+<h2><span class="header-section-number">1.1</span> Why are we interested in using resampling techniques</h2>
+<p>1.) Resampling provides clear advantages when assumptions of traditional parametric tests are not met.</p>
+<p>2.) Resampling methods can be used for testing means, medians, ratios, or other parameters are the same, so we do not need new methods for these different applications.</p>
+<p>3.) Resampling has advantages of conceptual simplicity (but a bit of learning curve for computation)</p>
 </div>
-<div id="bootstrap-methods---use-sampling-with-replacement-to-establish-confidence-intervals." class="section level2">
-<h2><span class="header-section-number">1.2</span> Bootstrap methods - use sampling with replacement to establish confidence intervals.</h2>
-<div id="backround" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Backround</h3>
-<p>Assuming we have some representative samples</p>
-<p>We can sample, with replacement, to generate confidence intervals.</p>
-<p>We randomly sample with replacement from the observed scores to produce a new sample of the same size as our original sample.</p>
-<p>Now we can calculate the statistic of interest (e.g., median) from the new sample.</p>
-<p>With a large number of new samples, at least 10,000, we generate an empirical sampling distribution for the statistic of interest and we can determine upper and lower confidence limits for this statistic.</p>
+<div id="parametric-statistical-approaches-have-some-issues" class="section level2">
+<h2><span class="header-section-number">1.2</span> Parametric statistical approaches have some issues:</h2>
+<p>1.) Restrictive assumptions</p>
+<p>2.) Tests can be difficult to interpret</p>
+<p>3.) Recall that the <span class="math inline">\(p\)</span>-value is defined as the probability of getting data as extreme as the observed data when the null hypothesis is true.</p>
+<p>4.) If the data are shuffled many times in accordance with the null hypothesis being true, the number of cases with data as extreme as the observed data can be counted, and a <span class="math inline">\(p\)</span>-value can be calculated.</p>
 </div>
-<div id="major-assumption" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Major Assumption</h3>
-<p>Collected data is a sufficient representation of the population that is being measured</p>
-<p>This assumption less restrictive that many statistical tests (i.e. assume normality)</p>
-<p>More stringent in terms of representativeness</p>
-</div>
-<div id="how-is-it-done" class="section level3">
-<h3><span class="header-section-number">1.2.3</span> How is it done?</h3>
+<div id="common-resampling-methods" class="section level2">
+<h2><span class="header-section-number">1.3</span> Common resampling methods</h2>
+<p>Three resampling methods are commonly used for different purposes:</p>
 <ol style="list-style-type: decimal">
-<li>Collect data to meet assumption of representativeness</li>
+<li><p>Permutation methods - use sampling without replacement to test hypotheses of “no effect”.</p></li>
+<li><p>Bootstrap methods - use sampling with replacement to establish confidence intervals.</p></li>
+<li><p>Monte Carlo methods - use repeated sampling from populations with known characteristics.</p></li>
 </ol>
-<p>Data must not only be collected randomly, but also fully span the possible values</p>
-<ol style="list-style-type: decimal">
-<li>Calculate parameter/statistic of interest</li>
-</ol>
-<p>Result of interest in the study</p>
-<p>Measure of central tendency (mean, median, mode)</p>
-<p>Variance or range</p>
-<p>Must depend on data collected, but can also depend on other data that will not be bootstrapped</p>
-<ol style="list-style-type: decimal">
-<li>Resample data randomly with replacement</li>
-</ol>
-<p>Major assumption of data representativeness means that the data collected can act as a surrogate for the population</p>
-<p>By randomly resampling with replacement are in effect generating many different data sets from the population</p>
-<p>Usual statistics rely on this idea of collecting one sample from a large number of possibilities to generate probability levels for hypothesis testing and distribution descriptions</p>
-<ol style="list-style-type: decimal">
-<li>Calculate the original parameter/statistic of interest with new dataset</li>
-</ol>
-<p>Concept is throw all your data into a hat</p>
-<p>Pick out one datum and record value</p>
-<p>Throw datum back into hat</p>
-<p>Pick another, record and return</p>
-<p>Continue picking until have as many values as in original sample</p>
-<p>Some datum will be in new dataset multiple times, other datum not at all</p>
-<ol style="list-style-type: decimal">
-<li>Repeat steps 3 and 4 many times to generate distribution of result</li>
-</ol>
-<p>How much is enough?</p>
-<p>For simple calculations 500-1000</p>
-<p>For complex calculations 10,000+</p>
-<p>Have to determine this empirically</p>
-<p>Conduct bootstraps until change in uncertainty of results stops changing</p>
-<ol style="list-style-type: decimal">
-<li>Use this distribution directly to quantify uncertainty</li>
-</ol>
-<p>The bootstrap results can be visualized with a histogram or cumulative distribution function for graphical display</p>
-<p>Use measures of this distribution to quantify uncertainty</p>
-</div>
-<div id="confidence-intervals" class="section level3">
-<h3><span class="header-section-number">1.2.4</span> Confidence Intervals</h3>
-<p>Percentile Method</p>
-<p>Sort bootstrap results into ascending order</p>
-<p>Determine inner percentile given sample size</p>
-<p>80% confidence interval from 1000 bootstraps would be the 100th and 900th values</p>
-<p>The results for these values in the sorted vector are the percentile method confidence intervals</p>
 </div>
 </div>
-<div id="monte-carlo-methods---use-repeated-sampling-from-populations-with-known-characteristics." class="section level2">
-<h2><span class="header-section-number">1.3</span> Monte Carlo methods - use repeated sampling from populations with known characteristics.</h2>
-<p>Generate populations with known characteristics.</p>
-<p>Sample randomly from these distributions.</p>
-<p>With many replications, we generate sampling distributions for the statistics of interest.</p>
-<p>For example, we may be interested in the sensitivity of the t-test to violations of the assumption of equal variance or normality.</p>
-<p>We can generate populations that have specific characteristics, and then with multiple resampling we can generate sampling distributions for the statistics of interest.</p>
-<p>Instead of resampling data as in bootstrapping, assuming a distribution for the data</p>
-<p>Powerful “What if?” analyses</p>
-<p>Assumed distributions and all covariances are correct for the conclusion</p>
-<p>If do not include covariances will generally overestimate uncertainty in results</p>
-<p>Basically a way to measure effect of variability of inputs on uncertainty of outputs</p>
+<div id="permutation-methods" class="section level1">
+<h1><span class="header-section-number">2</span> Permutation methods</h1>
+<p>Approach to randomly redistribute the observations and calculate a statistic of interest. If we do this many times, say 1,000 times or 10,000 times, we generate a distribution of observed values for the statistic of interest under the null hypothesis of no difference between the two populations. We compare our observed statistic to the sampling distribution to determine how likely our observed statistic is. The benefit of this approach is that we can generate a sampling distribution for any parameter of interest and then determine the percentile of our observed parameter relative to those of the permutation samples.</p>
+<div id="permutation-methods-in-practice" class="section level2">
+<h2><span class="header-section-number">2.1</span> Permutation methods in practice</h2>
+<p>A permutation test builds - rather than assumes - sampling distribution (called the “permutation distribution”) by resampling the observed data. Specifically, we can “shuffle” or permute the observed data (e.g., by assigning different outcome values to each observation from among the set of actually observed outcomes).</p>
+<p>Permutation tests are particularly relevant in null hypothesis significance testing (NHST) approaches. In these situations, the permutation test represents our process of inference because our null hypothesis is that the two treatment groups do not impact the outcome. When we permute the outcome values we see all of the possible alternative treatment assignments we could have had. While a permutation test requires that we see all possible permutations of the data (which can become quite large), we can easily conduct “approximate permutation tests” by simply conducting a vary large number of resamples.</p>
+</div>
+<div id="example-of-permutation-methods" class="section level2">
+<h2><span class="header-section-number">2.2</span> Example of permutation methods</h2>
+<p>We have randomly sampled the data from a log-normal distribution with equal mean and variance. We set the seed to ensure the results are repeatable. So in this case, we are looking to find there is no significant difference between the two populations.</p>
+<pre class="r"><code>diff.in.mean &lt;- 0.5
+mean.pop.1 &lt;- 1
+mean.pop.2 &lt;- abs(mean.pop.1 - diff.in.mean)
+
+set.seed(seed = 3) 
+# Run the code below, do you see what &quot;set.seed&quot; does to the random number generator?
+pop.1 &lt;- rlnorm(n = 100, meanlog = mean.pop.1, sdlog = 2)
+pop.2 &lt;- rlnorm(n = 100, meanlog = mean.pop.2, sdlog = 2)
+
+pop.1[1]
+pop.2[1]</code></pre>
+<ul>
+<li>The classic statistical approach here would be to use a t-test. Let’s instead apply our random permutation test.</li>
+</ul>
+<p>First, let’s compute the difference between the means of the two groups:</p>
+<pre class="r"><code>obs.diff &lt;- mean(pop.1) - mean(pop.2)</code></pre>
+<ul>
+<li>What we want to do is randomly shuffle our data between the two groups. If we were to sample (without replacement) once and compute the difference using the randomly shuffled version of groups, we would have the difference in population means, but only one iteration</li>
+</ul>
+<p>So, we will put this in a loop to get many values…</p>
+<pre class="r"><code>perm.diff &lt;-c()
+for (j in 1:10000) {
+  sample.ind &lt;- seq(1,length.out = length(c(pop.1, pop.2)))
+  ind.1 &lt;- sample(x = seq(1,length.out = length(c(pop.1, pop.2))), 
+                  size = length(pop.1), replace = F)
+  ind.2 &lt;- which(!(sample.ind %in% ind.1))
+  
+  perm.diff[j] &lt;- mean(c(pop.1,pop.2)[ind.1]) - mean(c(pop.1,pop.2)[ind.2])
+}</code></pre>
+<ul>
+<li>If we plot the examples, along with where our observed difference falls:</li>
+</ul>
+<pre class="r"><code>par(mfrow = c(3,1))
+hist(pop.1, 100, main = &quot;Histogram of population 1&quot;, xlim = c(0,100))
+hist(pop.2, 100, main = &quot;Histogram of population 2&quot;, xlim = c(0,100))
+hist(perm.diff,100, main = &quot;Histogram of perumuted differences in population means&quot;)
+abline(v = obs.diff, col = &quot;red&quot;, lwd = 2)
+perm.p &lt;- which(sort(perm.diff) &gt; obs.diff)[1]/10000</code></pre>
+<p>Questions for your consideration</p>
+<ul>
+<li><p>How does this result compare to using a parametric and alternative non-parametric test to test the equality of means of the two populations?</p></li>
+<li><p>Discuss and understand how the number of iterations you specify in the simulation impacts your assessment of the precision of your estimate.</p></li>
+</ul>
+</div>
+</div>
+<div id="bootstrap-methods" class="section level1">
+<h1><span class="header-section-number">3</span> Bootstrap methods</h1>
+<p>Assuming we have some representative samples, we can sample, with replacement, to generate confidence intervals. We randomly sample with replacement from the observed scores to produce a new sample of the same size as our original sample. Now we can calculate the statistic of interest (e.g., median) from the new sample. With a large number of new samples, at least 10,000, we generate an empirical sampling distribution for the statistic of interest and we can determine upper and lower confidence limits for this statistic.</p>
+<div id="a-simple-bootstrap-example" class="section level2">
+<h2><span class="header-section-number">3.1</span> A simple bootstrap example:</h2>
+<p>Here, we will estimate the size of the confidence interval by applying the bootstrap and sampling many samples with replacement from the original sample, each the same size as the original sample, computing a point estimate for each, and finding the CI of this distribution of bootstrap statistics.</p>
+<p>To construct the confidence interval we need to find the point estimate (sample mean) from the original sample.</p>
+<pre class="r"><code>mean.pop.1 &lt;- 1
+set.seed(seed = 3) 
+pop.1 &lt;- rlnorm(n = 100, meanlog = mean.pop.1, sdlog = 2)
+m.pop.1 &lt;- mean(pop.1)</code></pre>
+<p>To find the standard error, we will create a large vector to store all of the samples. Note, here we are sampling with replacement.</p>
+<pre class="r"><code>boot.samp &lt;- c()
+for (j in 1:1000) {
+  boot.samp[j] &lt;- mean(sample(pop.1, size = length(pop.1), replace = T))
+}</code></pre>
+<p>Now we plot the distribution of sample means and determine the 95% CI.</p>
+<pre class="r"><code>hist(boot.samp, 100)
+abline(v = sort(boot.samp)[c(25,975)], col = &quot;red&quot;, lwd = 2)
+abline(v = m.pop.1, col = &quot;red&quot;, lwd = 2)</code></pre>
+<p>We are 95% confident that the mean of the population is in the interval from 6.4 to 12.2.</p>
+<p>How do these 95% CI estimates compare to those derived using the <span class="math inline">\(t\)</span>-distribution?</p>
+</div>
+<div id="using-the-boot-package-to-bootstrap-95-ci-for-r-squared" class="section level2">
+<h2><span class="header-section-number">3.2</span> Using the “boot” package to Bootstrap 95% CI for R-Squared</h2>
+<pre class="r"><code>require(boot)
+library(boot)
+
+# function to obtain R-Squared from the data 
+rsq &lt;- function(formula, data, indices) {
+  d &lt;- data[indices,] # allows boot to select sample 
+  fit &lt;- lm(formula, data=d)
+  return(summary(fit)$r.square)  } 
+
+# bootstrapping with 1000 replications 
+results &lt;- boot(data=mtcars, statistic=rsq, R=1000, formula=mpg~wt+disp)
+
+# view results
+results
+class(results)
+
+# get 95% confidence interval 
+boot.ci(results, type=&quot;bca&quot;)</code></pre>
+<p>Why do we choose type “bca”, how do these compare to the other varieties of CI?</p>
+</div>
+<div id="challenge" class="section level2">
+<h2><span class="header-section-number">3.3</span> Challenge:</h2>
+<p>Write a script that will bootstrap the residuals values, such that given the linear model we can get the bootstrapped confidence intervals of the intercept and slope:</p>
+<p><span class="math inline">\(y_{ij} = \alpha+\beta\times{x_i} + \epsilon_{ij}\)</span>.</p>
+<p><span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the unknown intercept and slope and <span class="math inline">\(\epsilon_{ij}\)</span> are normally distributed errors.</p>
+<p>The residuals from the least squares fit are given by:</p>
+<p><span class="math inline">\(\epsilon_{ij} =y_{ij} - \alpha+\beta\times{x_i}\)</span>.</p>
+<p>Steps:</p>
+<p>1.) Bootstrap the residuals</p>
+<p>2.) Produce a vector of <span class="math inline">\(\epsilon_{ij}^{*}\)</span> by taking random draws, with replacement.</p>
+<p>3.) <span class="math inline">\(y_{ij}^* = y_{ij} + \epsilon_{ij}^{*}\)</span>.</p>
+<p>4.) Determine mean <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> based on <span class="math inline">\(y_{ij}^*\)</span></p>
+<p>5.) Repeat steps 1 to 4, <span class="math inline">\(n\)</span> = 1,000 times.</p>
+</div>
+</div>
+<div id="monte-carlo-methods" class="section level1">
+<h1><span class="header-section-number">4</span> Monte Carlo methods</h1>
+<p>With Monte Carlo techniques, we can specify several populations with known characteristics, and sample randomly from these distributions. With many replications, we generate sampling distributions for the statistics of interest. For example, we may be interested in the sensitivity of the t-test to violations of the assumption of equal variance or normality. We can generate populations that have specific characteristics, and then with multiple resampling we can generatesampling distributions for the statistics of interest.</p>
+<div id="lets-take-a-look-at-doing-a-monte-carlo-simulation" class="section level2">
+<h2><span class="header-section-number">4.1</span> Lets take a look at doing a Monte Carlo simulation</h2>
+<p>The Monte Carlo method is a way to solve problems through simulation. In this case, we will used it to calculate the number <span class="math inline">\(\pi\)</span>. You could approximate <span class="math inline">\(\pi\)</span> by simulation.</p>
+<p>The surface area of a quarter of a circle inscribe in [0,1] <span class="math inline">\(\times\)</span> [0,1] is <span class="math inline">\(\pi/4\)</span>.</p>
+<pre class="r"><code>plot(0, type = &#39;n&#39;, xlim = c(0,1), ylim = c(0,1), xlab = &quot;&quot;,ylab = &quot;&quot;)
+r &lt;- 1
+
+x &lt;- seq(0,1,by = 0.01)
+y &lt;- sqrt(1 - x^2)
+lines(x,y)</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAATlBMVEUAAAAAADoAAGYAOpAAZpAAZrY6AAA6kNtmAABmZjpmtv+QOgCQkDqQ29uQ2/+2ZgC2/7a2///bkDrbtmbb////tmb/25D//7b//9v///+EC9VrAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAfGUlEQVR4nO3dDXfayNagUdI9+Zj0THjb0063//8fHQTYxgYKdCSkOlV7r3VXErvNpZD0uAqE2LwAELJZ+w4AZCWgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQVHdANwCzmT9Rs9/ijNZ+tIG2zN6ouW/wk+3bPf86/ocf8AsD6FaygD59qv/YhgooMJ9UAf397Wz+/Mffo25BQIH5ZArof399LOa/P3b//vOfMTchoMB8MgX0+SyXQ1J/jrkJAQXmkymg2/MF+24SOuppUAEF5pMooLvp5vezLz6NW8MLKDCfRAHdzTbPl+vP415GElBg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" width="672" /></p>
+<ol style="list-style-type: decimal">
+<li>Let’s generate a great many points uniformly distributed in the square [0, 1] ? [0, 1].</li>
+</ol>
+<p>Reminder, that the equation for a circle is <span class="math inline">\(x^2 + y^2 = r^2\)</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Compute the proportion of those falling inside the quarter circle, that should be approximately the proportion of areas of the quarter circle and the inscribing square.</li>
+<li>Clever right?!</li>
+</ol>
+<pre class="r"><code>N &lt;- 1000
+x &lt;- runif(N,0,1)
+y &lt;- runif(N,0,1)
+
+Inside &lt;- 0
+for (i in 1:N) {
+  if (x[i]^2 + y[i]^2 &lt; 1) {
+    Inside &lt;- Inside + 1
+    points(x[i],y[i], pch = 20, col = &quot;green&quot;, bg = &quot;white&quot;)
+  }
+    if (x[i]^2 + y[i]^2 &gt; 1) {
+    points(x[i],y[i], pch = 20, col = &quot;orange&quot;, bg = &quot;white&quot;)
+  }
+}</code></pre>
+<p>Now determine the proportion of points inside vs. outside of the circle…</p>
+<pre class="r"><code>poportion.in &lt;- Inside/N</code></pre>
+</div>
+<div id="monte-carlo-practice" class="section level2">
+<h2><span class="header-section-number">4.2</span> Monte Carlo practice:</h2>
+<p>Compute the probability under the <span class="math inline">\(N(0,1)\)</span> distribution of a certain interval.</p>
+<p>So, we want to obtain the approximate integral of such function over the interval [0, 1] using simulation, so, instead of using the equation for the circle we will use:</p>
+<p><span class="math inline">\(f(x) = \frac{1}{2\pi}e^{\frac{-x^2}{2}}\)</span>.</p>
+<p>How does the equation above compare to what you know about the form of the normal distribution?</p>
+<p>How can we check our work?</p>
 </div>
 </div>
 
